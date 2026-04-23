@@ -43,11 +43,12 @@ public class Profesor {
     //toString
     @Override
     public String toString() {
-        return "Profesor{" +
-                "id_profesor=" + idProfesor +
-                ", nombre='" + nombre + '\'' +
-                ", dni='" + dni + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return "Profesor:" + nombre.toUpperCase() +
+                "\n\tID: " + idProfesor +
+                "\t| dni: " + dni +
+                "\n\temail: " + email + '\n';
+
+
+
     }
 }

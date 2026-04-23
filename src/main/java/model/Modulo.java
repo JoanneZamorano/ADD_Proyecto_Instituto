@@ -42,11 +42,9 @@ public class Modulo {
     //toString
     @Override
     public String toString() {
-        return "Modulo{" +
-                "idModulo=" + idModulo +
-                ", nombreModulo='" + nombreModulo + '\'' +
-                ", horasSemanales=" + horasSemanales +
-                ", profesor=" + profesor +
-                '}';
+        return "Modulo: " + nombreModulo.toUpperCase() +
+                "\n\tID Modulo: " + idModulo +
+                "\t| horas Semanales: " + horasSemanales +
+                "\n" + profesor;
     }
 }
