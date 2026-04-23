@@ -24,27 +24,22 @@ public class Modulo {
 
     //Getters y Setters
     public int getIdModulo() { return idModulo;}
-
     public void setIdModulo(int idModulo) { this.idModulo = idModulo;}
 
     public String getNombreModulo() { return nombreModulo;}
-
     public void setNombreModulo(String nombreModulo) { this.nombreModulo = nombreModulo;}
 
     public int getHorasSemanales() { return horasSemanales;}
-
     public void setHorasSemanales(int horasSemanales) { this.horasSemanales = horasSemanales;}
 
     public Profesor getProfesor() { return profesor; }
-
     public void setProfesor(Profesor profesor) { this.profesor = profesor; }
 
     //toString
     @Override
     public String toString() {
         return "Modulo: " + nombreModulo.toUpperCase() +
-                "\n\tID Modulo: " + idModulo +
-                "\t| horas Semanales: " + horasSemanales +
+                "\n\tID Modulo: " + idModulo + "\t| horas Semanales: " + horasSemanales +
                 "\n" + profesor;
     }
 }

@@ -23,32 +23,23 @@ public class Profesor {
     }
 
     //GETTERS y SETTERS
-
     public int getIdProfesor() { return idProfesor; }
-
     public void setIdProfesor(int idProfesor) { this.idProfesor = idProfesor; }
 
     public String getNombre() { return nombre; }
-
     public void setNombre(String nombre) { this.nombre = nombre; }
 
     public String getEmail() { return email; }
-
     public void setEmail(String email) { this.email = email; }
 
     public String getDni() { return dni; }
-
     public void setDni(String dni) { this.dni = dni; }
 
     //toString
     @Override
     public String toString() {
         return "Profesor:" + nombre.toUpperCase() +
-                "\n\tID: " + idProfesor +
-                "\t| dni: " + dni +
+                "\n\tID: " + idProfesor + "\t| dni: " + dni +
                 "\n\temail: " + email + '\n';
-
-
-
     }
 }

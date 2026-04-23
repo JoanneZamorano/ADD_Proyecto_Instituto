@@ -23,28 +23,21 @@ public class Matricula {
 
     // Getters y Setters
     public Alumno getAlumno() { return alumno; }
-
     public void setAlumno(Alumno alumno) { this.alumno = alumno; }
 
     public Modulo getModulo() { return modulo; }
-
     public void setModulo(Modulo modulo) { this.modulo = modulo; }
 
     public Date getFechaInscripcion() { return fechaInscripcion; }
-
     public void setFechaInscripcion(Date fechaInscripcion) { this.fechaInscripcion = fechaInscripcion; }
 
     public double getNotaFinal() { return notaFinal; }
-
     public void setNotaFinal(double notaFinal) { this.notaFinal = notaFinal; }
 
     @Override
     public String toString() {
-        return "Matricula{" +
-                "alumno=" + alumno +
-                ", modulo=" + modulo +
-                ", fechaInscripcion=" + fechaInscripcion +
-                ", notaFinal=" + notaFinal +
-                '}';
+        return "Matricula: " +
+                "\n\talumno: " + alumno + "\t| modulo: " + modulo +
+                "\n\tfecha Inscripcion: " + fechaInscripcion + "\t| nota Final: " + notaFinal;
     }
 }
