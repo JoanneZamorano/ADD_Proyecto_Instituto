@@ -4,6 +4,8 @@ import dao.MatriculaDAO;
 import model.Alumno;
 import model.Matricula;
 import model.Modulo;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class MenuMatricula {
@@ -34,6 +36,7 @@ public class MenuMatricula {
             System.out.println("\t2. Matricular alumno en un módulo");
             System.out.println("\t3. Actualizar nota de una matrícula");
             System.out.println("\t4. Eliminar matrícula");
+            System.out.println("\t5. TOP 5 MEJORES NOTAS");
             System.out.println("\t0. Volver al menú principal");
             System.out.print("Seleccione una opción: ");
 
@@ -68,6 +71,17 @@ public class MenuMatricula {
                     System.out.print("ID Módulo: "); int dM = sc.nextInt();
                     sc.nextLine();
                     matriculaDAO.eliminarMatricula(dA, dM);
+                    break;
+                case 5:
+                    System.out.println("\n--- TOP 5 MEJORES NOTAS ---");
+                    List<Matricula> top = matriculaDAO.obtenerTopNotas();
+                    if (top.isEmpty()) {
+                        System.out.println("No hay notas registradas");
+                    } else {
+                        for (Matricula m : top) {
+                            System.out.println(" - Nota: " + m.getNotaFinal() + " | Alumno: " + m.getAlumno().getNombre() + " | Módulo: " + m.getModulo().getNombreModulo());
+                        }
+                    }
                     break;
                 default: System.out.println("Opción no válida");
             }

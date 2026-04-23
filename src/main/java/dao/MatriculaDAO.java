@@ -52,17 +52,17 @@ public class MatriculaDAO {
             // 2. Por cada fila que nos devuelva la base de datos...
             while (rs.next()) {
 
-                // Creamos un alumno y le ponemos el nombre que viene en la fila
+                // creo un alumno y le pongo el nombre que viene en la fila
                 Alumno al = new Alumno();
                 al.setIdAlumno(rs.getInt("id_alumno"));
                 al.setNombre(rs.getString("nom_al"));
 
-                // Creamos el módulo y le ponemos su nombre
+                //creo el módulo y le pongo su nombre
                 Modulo mo = new Modulo();
                 mo.setIdModulo(rs.getInt("id_modulo"));
                 mo.setNombreModulo(rs.getString("nom_mod"));
 
-                // Juntamos todo en el objeto Matricula
+                // junto todo en el objeto Matricula
                 Matricula mat = new Matricula(
                         al,
                         mo,
@@ -70,12 +70,9 @@ public class MatriculaDAO {
                         rs.getDouble("nota_final")
                 );
 
-                // Guardamos la matrícula en nuestra lista
-                lista.add(mat);
+                lista.add(mat); // Guarda la matrícula en nuestra lista
             }
-        } catch (SQLException e) {
-            System.out.println("Error al leer datos: " + e.getMessage());
-        }
+        } catch (SQLException e) { System.out.println("Error al leer datos: " + e.getMessage()); }
 
         return lista; // Devolvemos la lista llena de matrículas
     }
@@ -122,4 +119,35 @@ public class MatriculaDAO {
             throw new RuntimeException(e);
         }
     }
+
+    //5. TOP 5 MEJORES NOTAS
+    public List<Matricula> obtenerTopNotas() {
+        List<Matricula> lista = new ArrayList<>();
+
+        String sql = "SELECT m.*, a.nombre as nom_al, mod.nombre_modulo as nom_mod " +
+                "FROM matriculas m " +
+                "JOIN alumnos a ON m.id_alumno = a.id_alumno " +
+                "JOIN modulos mod ON m.id_modulo = mod.id_modulo " +
+                "ORDER BY m.nota_final DESC LIMIT 5";
+
+        try {
+            Connection conn = DatabaseConnection.conectar();
+            ResultSet rs = conn.createStatement().executeQuery(sql);
+
+            while (rs.next()) {
+                Alumno al = new Alumno();
+                al.setNombre(rs.getString("nom_al"));
+                Modulo mo = new Modulo();
+                mo.setNombreModulo(rs.getString("nom_mod"));
+
+                lista.add(new Matricula(al, mo, rs.getDate("fecha_inscripcion"), rs.getDouble("nota_final")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return lista;
+    }
 }
+
+
+
