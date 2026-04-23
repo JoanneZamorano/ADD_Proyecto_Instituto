@@ -4,8 +4,7 @@ import java.util.Date;
 
 public class Matricula {
     /**
-     * La clave primaria en la BD es compuesta (id_alumno + id_modulo),
-     * así que usamos los objetos completos para representarla
+     * La PK en la BD es compuesta (id_alumno + id_modulo) asi que uso los objetos completos para representarla
      */
     private Alumno alumno;
     private Modulo modulo;
